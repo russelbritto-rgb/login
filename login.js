@@ -12,18 +12,23 @@ function login() {
       password: password
     })
   })
-  .then(response => {
+  .then(async response => {
+  const text = await response.text();
+
+  try {
+    const data = JSON.parse(text);
+
     if (!response.ok) {
-      return response.json().then(err => { throw err; });
+      handleError(data);
+      return;
     }
-    return response.json();
-  })
-  .then(data => {
+
     alert("Login Successful");
-  })
-  .catch(error => {
+  } catch {
     document.getElementById("error").innerText =
-      error.message || "Login failed. Please try again.";
-  });
+      "Invalid response from server (not JSON)";
+  }
+});
 }
+
 
